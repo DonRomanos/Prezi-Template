@@ -1,37 +1,30 @@
-# remark-it
+# A template for my presentations, based on remark-it
 
-markdown / html 幻灯片模板，基于 remarkjs.  
-markdown / html slideshow template, powered by remarkjs.
+Markdown / html slideshow template, powered by remarkjs.
 
-简体中文 | [English](README-en_US.md)
+All credit goes to the original creator of [remark-it](https://github.com/1-2-3/remark-it)
 
-## Demo
+## Features
 
-[中文 Demo](https://remark-it.now.sh)
+- All resources support offline access
+- [Remarkjs](https://github.com/gnab/remark) Samples
+- English and Chinese typography, powered by [Typo.css](https://github.com/sofish/typo.css)
+- Multi-column layouts, powered by [Pure.css](https://github.com/pure-css/pure)
+- Dark ann light theme, powered by [Nord](https://github.com/arcticicestudio/nord)
+- 150 text and background colors, powered by [Open color](https://github.com/yeun/open-color)
+- Components powered by [Vue.js](https://cn.vuejs.org/index.html)
+- Markdown Diagrams powered by [Mermaid](https://github.com/knsv/mermaid)
 
-[English Demo](https://remark-it.now.sh/index-en_US.html)
+## Installation
 
-## 特性
+Clone the whole project and edit index.html.
 
-- 全部资源支持离线访问
-- [Remarkjs](https://github.com/gnab/remark) 功能示例
-- 基于 [Typo.css](https://github.com/sofish/typo.css) 的中英文排版
-- 基于 [Pure.css](https://github.com/pure-css/pure) 的多列布局
-- 基于 [Nord](https://github.com/arcticicestudio/nord) 的暗色、亮色主题
-- 基于 [Open color](https://github.com/yeun/open-color) 的 150 个文字和背景颜色
-- 基于 [Vue.js](https://cn.vuejs.org/index.html) 的组件库
-- 基于 [Mermaid](https://github.com/knsv/mermaid) 的 Markdown 图表
+## Usage
 
-## 安装
+Double-click on index.html for a slide presentation.
 
-将项目整体 Clone 至本地，直接编辑 index.html 即可。
-
-## 使用
-
-双击 index.html 即可进行幻灯片演示。
-
-![](/screenshots/11.png)
-![](/screenshots/22.png)
+![](/screenshots/111.png)
+![](/screenshots/222.png)
 
 ## License
 
