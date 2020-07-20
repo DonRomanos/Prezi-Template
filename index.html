@@ -102,12 +102,9 @@ TEST_CASE("Local image", "[AcquisitionMobilePi]")
     int sendCnt = 0;
     for(int i = 0; i < 100; i++)
     {
-        bool sendSuccess = server->sendImage(
-            header, buffer.getData(), buffer.size(),[&sendCnt](bool success)
-            {
-                if(success) sendCnt++;
-            });
+        bool sendSuccess = server->sendImage(buffer,...)
         REQUIRE(sendSuccess);
+        ++sendCnt;
     }
 
     REQUIRE(sendCnt == 100)
@@ -122,16 +119,12 @@ class: nord-dark, center, middle
 --
 <small>.letter-spacing-20[and takes practice...]</small>
 
---
-
-# Same goes for writing good Code
-
 ---
 class: center
 
 # TDD to the Rescue
 
-.block-center[![](./images/red-green-refactor.png)]
+.center[![](./images/red-green-refactor.png)]
 
 ---
 
@@ -150,11 +143,9 @@ Martin Fowler:
 "Refactoring (noun): a change made to the internal structure of software to make it easier to understand and cheaper to modify without changing its observable behavior."
 
 ---
-class: middle
-
 # The true Power of TDD
 
-It forces you to clarify your Requirements and expected Behavior
+It forces you to think about your Requirements
 
 --
 
@@ -164,9 +155,13 @@ It forces you to design your code for testability
 
 Proper tests are the best documentation
 
+--
+
+It takes away your fear and gives you trust
+
 ---
 
-# Some examples
+# An example from our Codebase
 
 ```cpp
 struct SimilarPerson
@@ -177,19 +172,41 @@ struct SimilarPerson
     bool isIdentified              = false;
 };
 
-std::shared_ptr<const SimilarPerson> FaceUnlock::identifyAndPad(
-  const std::shared_ptr<const DataBuffer>& originalImage,
-  std::shared_ptr<const std::vector<X::DPR::LaserPoint>> laserPoints)
-{
-  // ....
-}
+std::shared_ptr<const SimilarPerson> FaceUnlock::identifyAndPad(image...)
 ```
 --
-What is the name when the person cannot be identified? 
+What is the name when the person in the image is unknown? 
+
+--
+
+What is the name when there is no person in the image?
 
 ---
 
-# Lets walk through a sample
+# What if we had a test like this?
+
+```cpp
+SECTION("Should not identify anything without a person")
+{
+  auto result = toTest->identifyAndPad(imageNothing, ...);
+
+  CHECK(result.similarityScore < 0.0f);
+  CHECK(result.name.empty());
+}
+
+SECTION("Should not identify the wrong person")
+{
+  auto result = toTest->identifyAndPad(imageWrongPerson, ...);
+
+  CHECK(result.similarityScore < 0.1f 
+     && result.similarityScore > 0.0f);
+  CHECK(result.name == "unknown");
+}
+```
+
+---
+
+# Lets walk through another sample
 
 ---
 
@@ -200,7 +217,7 @@ class: middle
 
 # A Personal Touch
 
-Use the tests for design reviews, they use the public interface of a function / class 
+Use the tests for design reviews and documentation, they use the public interface of a function / class 
 
 --
 
@@ -209,7 +226,14 @@ Test for important behavior, e.g. exceptions, wrong input,... not only the happy
 --
 
 Use good naming, e.g. "Should return nullptr result when no face is in the image"
----
+
+--
+
+If you have good tests, you (almost) never have to write tutorials or examples
+
+--
+
+Test the right thing on the right Level, Module-, Unit-, Integration-, Benchmark-, Performance-Tests look differently and have different purposes
 
 ---
 
