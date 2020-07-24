@@ -401,6 +401,13 @@ pre {
   margin-right: auto;
 }
 
+.block-center {
+  display: block;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding-top: 100;
+}
+
 /*
  * 布局
 */
